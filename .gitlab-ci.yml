@@ -1,0 +1,36 @@
+image: yueyehua/debian-kitchen
+
+before_script:
+  - bundle install
+
+puppet-lint:
+  script:
+    - puppet-lint --no-autoloader_layout-check --error-level all .
+
+rubocop:
+  script:
+    - rubocop
+
+lines_length:
+  script:
+    - >
+      curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_lines_length.sh |
+      bash
+
+git_history:
+  script:
+    - >
+      curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_git_history.sh |
+      bash
+
+rake:
+  script:
+    - rake test
+
+kitchen:
+  tags:
+    - docker
+  script:
+    - kitchen test -c -d always
