@@ -14,16 +14,14 @@ rubocop:
 lines_length:
   script:
     - >
-      curl -s
-      https://gitlab.com/yue-script/checks/raw/master/check_lines_length.sh |
-      bash
+      bash < (curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_lines_length.sh)
 
 git_history:
   script:
     - >
-      curl -s
-      https://gitlab.com/yue-script/checks/raw/master/check_git_history.sh |
-      bash
+      bash < (curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_git_history.sh)
 
 rake:
   script:
