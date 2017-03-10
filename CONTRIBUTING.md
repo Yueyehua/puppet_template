@@ -3,9 +3,9 @@ Contributing
 
 You are more than welcome to submit issues and merge requests to this project.
 
-### Foodcritic, Rubocop and Tests
+### Puppet-lint, Rubocop and Tests
 
-Your commits must not break any tests, foodcritic nor rubocop.
+Your commits must not break any tests, Puppet-lint nor rubocop.
 
 ### Commits format
 
