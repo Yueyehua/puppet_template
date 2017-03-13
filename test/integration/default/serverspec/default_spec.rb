@@ -19,6 +19,9 @@ require 'spec_helper'
 describe 'Test file' do
   describe file('/tmp/test') do
     it { should exist }
+    it { should be_owned_by 'root' }
+    it { should be_grouped_into 'root' }
+    it { should be_mode 755 }
     its(:content) { should contain 'Hello world!' }
   end
 end
