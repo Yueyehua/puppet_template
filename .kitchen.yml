@@ -25,7 +25,8 @@ driver:
   volume: /sys/fs/cgroup:/sys/fs/cgroup:ro
   command: /sbin/init
   network: kitchen
-  security_opt: seccomp=unconfined
+#  security_opt: seccomp=unconfined
+  privileged: true
   skip_preparation: true
   require_chef_omnibus: false
 
@@ -44,7 +45,7 @@ verifier:
 platforms:
   - name: debian
     driver_config:
-      image: yueyehua/debian-kitchen
+      image: yueyehua/debian-puppet
 
 suites:
   - name: default

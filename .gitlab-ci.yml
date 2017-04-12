@@ -1,13 +1,10 @@
-image: yueyehua/debian-kitchen
-
-before_script:
-  - bundle install
-
 puppet-lint:
+  image: yueyehua/debian-puppet
   script:
     - puppet-lint --no-autoloader_layout-check --error-level all .
 
 rubocop:
+  image: yueyehua/debian-ruby
   script:
     - rubocop
 
@@ -23,11 +20,8 @@ git_history:
       bash <(curl -s
       https://gitlab.com/yue-script/checks/raw/master/check_git_history.sh)
 
-rake:
-  script:
-    - rake test
-
 kitchen:
+  image: yueyehua/debian-kitchen
   tags:
     - docker
   script:

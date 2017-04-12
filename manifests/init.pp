@@ -46,16 +46,61 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+class puppet_template (
+  $ensure_package = $puppet_template::params::ensure_package,
+  $ensure_service = $puppet_template::params::ensure_service,
+  $enable         = $puppet_template::params::enable,
+  $package_name   = $puppet_template::params::package_name,
+  $service_name   = $puppet_template::params::service_name,
+  $user_name      = $puppet_template::params::user_name,
+  $group_name     = $puppet_template::params::group_name,
+  $config_dir     = $puppet_template::params::config_dir,
+  $config_file    = $puppet_template::params::config_file,
+  $sysconfig      = $puppet_template::params::sysconfig,
+  $logrotate      = $puppet_template::params::logrotate,
+  $options        = $puppet_template::params::options,
+  $dependencies   = $puppet_template::params::dependencies
+) inherits puppet_template::params {
 
-class puppet_template {
-
-  file { 'Copy the test file to /tmp':
-    ensure => present,
-    path   => '/tmp/test',
-    owner  => root,
-    group  => root,
-    mode   => '0755',
-    source => 'puppet:///modules/puppet_template/test_file'
+  # Dependencies management.
+  package { $dependencies:
+    ensure => $ensure_package
   }
 
+  # Package management.
+  package { $package_name:
+      ensure => $ensure_package
+  }
+
+  # Service management.
+  service { $service_name:
+    ensure  => $ensure_service,
+    enable  => $enable,
+    hasrestart => true,
+    hasstatus  => true,
+    require => Package[$package_name]
+  }
+
+  # Files management.
+  file { "${config_dir}/${config_file}":
+    ensure  => present,
+    path    => "${config_dir}/${config_file}",
+    owner   => $user_name,
+    group   => $group_name,
+    mode    => '0700',
+    content => template('puppet_template/template.conf.erb'),
+    require => Package[$package_name],
+    notify  => Service[$service_name],
+  }
+
+  file { $sysconfig:
+    ensure  => present,
+    path    => $sysconfig,
+    owner   => $user_name,
+    group   => $group_name,
+    mode    => '0644',
+    content => template("puppet_template/sysconfig.${::operatingsystem}.erb"),
+    require => Package[$package_name],
+    notify  => Service[$service_name],
+  }
 }

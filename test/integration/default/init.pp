@@ -15,4 +15,14 @@
 #
 
 class { 'puppet_template':
+  package_name => 'ntp',
+  service_name => 'ntp',
+  config_dir   => '/tmp',
+  config_file  => 'config',
+  sysconfig    => '/tmp/sysconfig',
+  dependencies => [
+    'cowsay',
+    'toilet',
+    'fortune-mod'
+  ]
 }

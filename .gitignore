@@ -1,3 +1,5 @@
+pkg/
+
 .vagrant
 Berksfile.lock
 *~
@@ -14,3 +16,8 @@ bin/*
 
 .kitchen/
 .kitchen.local.yml
+chefignore
+
+.librarian
+.tmp
+Puppetfile.lock
