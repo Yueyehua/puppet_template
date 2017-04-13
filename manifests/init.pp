@@ -74,11 +74,11 @@ class puppet_template (
 
   # Service management.
   service { $service_name:
-    ensure  => $ensure_service,
-    enable  => $enable,
+    ensure     => $ensure_service,
+    enable     => $enable,
     hasrestart => true,
     hasstatus  => true,
-    require => Package[$package_name]
+    require    => Package[$package_name]
   }
 
   # Files management.

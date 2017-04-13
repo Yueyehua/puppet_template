@@ -6,7 +6,7 @@ class puppet_template::params {
   # Defaults values.
   $ensure_package = 'present'
   $ensure_service = 'running'
-  $enable  = true
+  $enable         = true
 
   # Create variables depending on OS.
   case $::operatingsystem {
