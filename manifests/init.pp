@@ -83,7 +83,7 @@ class puppet_template (
 
   # Files management.
   file { "${config_dir}/${config_file}":
-    ensure  => present,
+    ensure  => $ensure_package,
     path    => "${config_dir}/${config_file}",
     owner   => $user_name,
     group   => $group_name,
@@ -94,7 +94,7 @@ class puppet_template (
   }
 
   file { $sysconfig:
-    ensure  => present,
+    ensure  => $ensure_package,
     path    => $sysconfig,
     owner   => $user_name,
     group   => $group_name,
