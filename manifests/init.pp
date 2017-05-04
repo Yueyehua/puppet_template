@@ -1,4 +1,4 @@
-# == Class: puppet_template
+# == Class: template
 #
 # Full description of class puppet_template here.
 #
@@ -23,7 +23,7 @@
 #
 # === Examples
 #
-#  class { 'puppet_template':
+#  class { 'template':
 #  }
 #
 # === Authors
@@ -46,21 +46,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-class puppet_template (
-  $ensure_package = $puppet_template::params::ensure_package,
-  $ensure_service = $puppet_template::params::ensure_service,
-  $enable         = $puppet_template::params::enable,
-  $package_name   = $puppet_template::params::package_name,
-  $service_name   = $puppet_template::params::service_name,
-  $user_name      = $puppet_template::params::user_name,
-  $group_name     = $puppet_template::params::group_name,
-  $config_dir     = $puppet_template::params::config_dir,
-  $config_file    = $puppet_template::params::config_file,
-  $sysconfig      = $puppet_template::params::sysconfig,
-  $logrotate      = $puppet_template::params::logrotate,
-  $options        = $puppet_template::params::options,
-  $dependencies   = $puppet_template::params::dependencies
-) inherits puppet_template::params {
+class template (
+  $ensure_package = $template::params::ensure_package,
+  $ensure_service = $template::params::ensure_service,
+  $enable         = $template::params::enable,
+  $package_name   = $template::params::package_name,
+  $service_name   = $template::params::service_name,
+  $user_name      = $template::params::user_name,
+  $group_name     = $template::params::group_name,
+  $config_dir     = $template::params::config_dir,
+  $config_file    = $template::params::config_file,
+  $sysconfig      = $template::params::sysconfig,
+  $logrotate      = $template::params::logrotate,
+  $options        = $template::params::options,
+  $dependencies   = $template::params::dependencies
+) inherits template::params {
 
   # Dependencies management.
   package { $dependencies:
@@ -88,7 +88,7 @@ class puppet_template (
     owner   => $user_name,
     group   => $group_name,
     mode    => '0700',
-    content => template('puppet_template/template.conf.erb'),
+    content => template('template/template.conf.erb'),
     require => Package[$package_name],
     notify  => Service[$service_name],
   }
@@ -99,7 +99,7 @@ class puppet_template (
     owner   => $user_name,
     group   => $group_name,
     mode    => '0644',
-    content => template("puppet_template/sysconfig.${::operatingsystem}.erb"),
+    content => template("template/sysconfig.${::operatingsystem}.erb"),
     require => Package[$package_name],
     notify  => Service[$service_name],
   }

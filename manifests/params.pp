@@ -1,8 +1,8 @@
-# == Class: puppet_template::params
+# == Class: template::params
 #
 # This is a container class holding default parameters for template module.
 #
-class puppet_template::params {
+class template::params {
   # Defaults values.
   $ensure_package = 'present'
   $ensure_service = 'running'

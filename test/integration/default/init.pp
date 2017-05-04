@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-class { 'puppet_template':
+class { 'template':
   package_name => 'ntp',
   service_name => 'ntp',
   config_dir   => '/tmp',
