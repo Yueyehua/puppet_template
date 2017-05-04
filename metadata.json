@@ -1,13 +1,33 @@
 {
-  "name": "puppet_template",
+  "name": "vpgrp-template",
   "version": "0.1.0",
   "author": "rdelaplace",
-  "summary": "Simple puppet template.",
+  "summary": "Puppet module to install, deploy and configure template.",
   "license": "Apache 2.0",
-  "source": "https://github.com/Yueyehua/puppet_template",
-  "project_page": "https://github.com/Yueyehua/puppet_template",
-  "issues_url": "https://github.com/Yueyehua/puppet_template/issues",
-  "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  "source": "https://git.vpgrp.io/puppet/puppet-template",
+  "project_page": "https://git.vpgrp.io/puppet/puppet-template",
+  "issues_url": "https://git.vpgrp.io/puppet/puppet-template/issues",
+  "dependencies": [],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [ "5", "6", "7", "8", "9" ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [ "12.04", "14.04", "16.04", "16.10" ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [ "5", "6" ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [ "6", "7" ]
+    }
+  ],
+  "tags": [ "template" ],
+  "requirements": [
+    { "name": "puppet", "version_requirement": ">=2.7.0 <5.0.0" }
   ]
 }
