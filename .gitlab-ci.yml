@@ -1,28 +1,36 @@
 puppet-lint:
+  tags:
+    - default
   image: yueyehua/debian-puppet
   script:
     - puppet-lint --no-autoloader_layout-check --error-level all .
 
 rubocop:
+  tags:
+    - default
   image: yueyehua/debian-ruby
   script:
     - rubocop
 
 lines_length:
+  tags:
+    - default
   script:
     - >
       bash <(curl -s
       https://gitlab.com/yue-script/checks/raw/master/check_lines_length.sh)
 
 git_history:
+  tags:
+    - default
   script:
     - >
       bash <(curl -s
       https://gitlab.com/yue-script/checks/raw/master/check_git_history.sh)
 
 kitchen:
-  image: yueyehua/debian-kitchen
   tags:
-    - docker
+    - puppet
+  image: yueyehua/debian-kitchen
   script:
     - kitchen test -c -d always

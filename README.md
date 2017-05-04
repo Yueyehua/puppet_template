@@ -1,79 +1,62 @@
-# puppet_template
-
-#### Table of Contents
+# puppet-template ![License][license-img]
 
 1. [Overview](#overview)
-2. [Module Description](#module-description)
+2. [Description](#module-description)
 3. [Setup](#setup)
-    * [What puppet_template affects](#what-puppet_template-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with puppet_template](#beginning-with-puppet_template)
 4. [Usage](#usage)
-5. [Reference](#reference)
 5. [Limitations](#limitations)
 6. [Development](#development)
+7. [Miscellaneous](#miscellaneous)
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it
-solves. This is your 30 second elevator pitch for your module. Consider
-including OS/Puppet version it works with.
+Description of `template`
 
-## Module Description
+[domain.tld](https://www.domain.tld/)
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
+## Description
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+This module enables you to install, deploy, and configure template.
 
 ## Setup
 
-### What puppet_template affects
-
-* A list of files, packages, services, or operations that the module will
-   alter, impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-### Beginning with puppet_template
-
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+Copy this module in your modules folder without *puppet-* in the name.
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+Use default configuration.
 
-## Reference
+```puppet
+class { 'template': }
+```
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module
-so people know what the module is touching on their system but don't need to
-mess with things. (We are working on automating this section!)
+Add your configuration.
+
+```puppet
+class { 'template':
+  template_var_1 => 'tata',
+  template_var_2 => 'titi',
+}
+```
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+Limitations of `template`.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+Please read carefully [CONTRIBUTING.md]
+(https://git.vpgrp.io/ansible/puppet-rules/raw/master/CONTRIBUTING.md)
+before making a merge request.
 
-## Release Notes/Contributors/Etc **Optional**
+```
+    ╚⊙ ⊙╝
+  ╚═(███)═╝
+ ╚═(███)═╝
+╚═(███)═╝
+ ╚═(███)═╝
+  ╚═(███)═╝
+   ╚═(███)═╝
+```
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel
-are necessary or important to include here. Please use the `## ` header.
+[license-img]: https://img.shields.io/badge/license-Apache-blue.svg
