@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+exec { "apt-update":
+        command => "/usr/bin/apt-get update",
+    }
+Exec["apt-update"] -> Package <| |>
+
 class { 'template':
   package_name => 'ntp',
   service_name => 'ntp',
